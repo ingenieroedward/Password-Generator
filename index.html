@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script defer src="script.js"></script>
+    <title>Password Generator</title>
+</head>
+
+<body>
+    <main class="contenido">
+        <h1 class="titulo">Password Generator</h1>
+        <form class="form" name="f1">
+            <input id="contraseña" name="camp1" type="text" placeholder="P4$5W0rD!" readonly>
+            <i id="icono" class="bi bi-clipboard icono-copiar" onclick="copiarAlPortapapeles('contraseña')"></i>
+        </form>
+        <section class="peticiones">
+            <label class="longitud">Longitud de la contraseña</label>
+            <output for="rango" id="numero">10</output>
+            <br>
+            <input oninput="numero.value=Number(rango.value).toLocaleString('es-ES');" step="1" id="rango" value="10" min="8" max="20" type="range"> 
+            <br>
+            <br>
+            <input class="checkbox" type="checkbox" name="mayusculas" id="mayusculas">
+            <label for="mayusculas">Incluir letras mayúsculas</label>
+            <br>
+            <input class="checkbox" type="checkbox" name="minusculas" id="minusculas">
+            <label for="minusculas">Incluir letras minúsculas</label>
+            <br>
+            <input class="checkbox" type="checkbox" name="numeros" id="numeros">
+            <label for="numeros">Incluir números</label>
+            <br>
+            <input class="checkbox" type="checkbox" name="simbolos" id="simbolos">
+            <label for="simbolos">Incluir símbolos</label>
+            <br>
+            <section class="fortaleza">
+                <h3>Fortaleza</h3>
+                <p id="modo">----</p>
+                <div class="nivel-fortaleza">
+                    <div class="nivel"></div>
+                    <div class="nivel"></div>
+                    <div class="nivel"></div>
+                    <div class="nivel"></div>
+                </div>
+            </section>
+            <button id="generar">Generar <i class="bi bi-arrow-right-short"></i></button>
+        </section>
+    </main>
+</body>
+</html>

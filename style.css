@@ -1,0 +1,153 @@
+html,body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(25, 25, 34);
+    color: #fff;
+    font-family: monospace;
+}
+main{
+    width: 250px;
+}
+h1.titulo{
+    font-size: .8rem;
+    font-weight:900;
+    color: rgb(107, 101, 101);
+    text-align: center;
+    margin-bottom: 1.2rem;
+}
+/* password generada */
+.form{
+    padding: 0.5rem;
+    background-color: rgb(49, 49, 61);
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    box-shadow: 5px 5px 2rem #2958da;
+}
+.form input{
+    width: 85%;
+    background-color: transparent;
+    border: none;
+    font-family: monospace;
+    font-size: 1rem;
+    color: #8b828f;
+    padding-left: .5rem;
+}
+
+.icono-copiar{
+    color: #2958da;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+.icono-copiar:hover{
+    box-shadow: 5px 5px 2rem #050505;
+}
+/* peticiones */
+.peticiones{
+    background-color: rgb(49, 49, 61);
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 5px 5px 2rem #2958da;
+}
+.peticiones label{
+    font-size: .7rem;
+}
+#rango{
+    width: 100%;
+    cursor: pointer;
+    height: 1px;
+}
+#rango:hover{
+    box-shadow: 5px 5px 2rem #2958da;
+}
+.peticiones input{
+    background-color: rgb(49, 49, 61);
+}
+.longitud{
+    margin-right: 30px;
+}
+#numero{
+    font-size: 1rem;
+    color: #2958da;
+    font-weight: bold;
+}
+/* fortaleza */
+.fortaleza{
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    background-color: #29232c;
+    height: 2rem;
+    margin-bottom: 1rem;
+    padding: .2rem;
+    border-radius: 10px;
+}
+.fortaleza h3{
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    margin-right: 20px;
+    padding-left: .5rem;
+    font-weight: 100;
+    color: #8b828f;
+    font-family: monospace;
+    letter-spacing: 3px;
+}
+.fortaleza p{
+    margin-right: 10px;
+}
+.nivel-fortaleza{
+    display: flex;
+    justify-content: space-evenly;
+    
+    width: 50px;
+    height: 100%;
+    align-items: center;
+}
+
+.nivel-fortaleza div{
+    width: 5px;
+    height: 50%;
+    border: 1px solid #8b828f;
+}
+.muybajo{
+    background-color: rgb(243, 14, 14);
+}
+.bajo{
+    background-color: rgb(247, 69, 5);
+}
+.medio{
+    background-color: rgb(240, 240, 12);
+}
+.alto{
+    background-color: rgb(14, 224, 14);
+}
+#modo{
+    width: 40px;
+}
+
+/* boton generar */
+#generar{
+    width: 100%;
+    padding: .4rem;
+    text-transform: uppercase;
+    font-family: monospace;
+    letter-spacing: 2px;
+    background-color: transparent;
+    border: 1px solid #2958da;;
+    color: #2958da;
+    font-weight: 900;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+#generar:hover{
+    background: linear-gradient(#2958da,#6d68a8);
+    color: #29232c;
+    box-shadow: 2px 2px 5rem #2958da;
+}
