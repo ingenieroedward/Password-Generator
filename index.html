@@ -1,54 +1,183 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Generador de contraseñas, frases, tokens, UUID y PIN con aleatoriedad criptográfica y bóveda local.">
+    <meta name="color-scheme" content="dark">
+    <title>Generador de Secretos</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <script defer src="script.js"></script>
-    <title>Password Generator</title>
 </head>
 
 <body>
-    <main class="contenido">
-        <h1 class="titulo">Password Generator</h1>
-        <form class="form" name="f1">
-            <input id="contraseña" name="camp1" type="text" placeholder="P4$5W0rD!" readonly>
-            <i id="icono" class="bi bi-clipboard icono-copiar" onclick="copiarAlPortapapeles('contraseña')"></i>
-        </form>
-        <section class="peticiones">
-            <label class="longitud">Longitud de la contraseña</label>
-            <output for="rango" id="numero">10</output>
-            <br>
-            <input oninput="numero.value=Number(rango.value).toLocaleString('es-ES');" step="1" id="rango" value="10" min="8" max="20" type="range"> 
-            <br>
-            <br>
-            <input class="checkbox" type="checkbox" name="mayusculas" id="mayusculas">
-            <label for="mayusculas">Incluir letras mayúsculas</label>
-            <br>
-            <input class="checkbox" type="checkbox" name="minusculas" id="minusculas">
-            <label for="minusculas">Incluir letras minúsculas</label>
-            <br>
-            <input class="checkbox" type="checkbox" name="numeros" id="numeros">
-            <label for="numeros">Incluir números</label>
-            <br>
-            <input class="checkbox" type="checkbox" name="simbolos" id="simbolos">
-            <label for="simbolos">Incluir símbolos</label>
-            <br>
-            <section class="fortaleza">
-                <h3>Fortaleza</h3>
-                <p id="modo">----</p>
-                <div class="nivel-fortaleza">
-                    <div class="nivel"></div>
-                    <div class="nivel"></div>
-                    <div class="nivel"></div>
-                    <div class="nivel"></div>
+    <!-- Iconos (sprite inline, sin dependencias externas) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <defs>
+            <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+            <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+            <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
+            <symbol id="i-save" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></symbol>
+            <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></symbol>
+            <symbol id="i-eyeoff" viewBox="0 0 24 24"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/></symbol>
+            <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></symbol>
+            <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></symbol>
+            <symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></symbol>
+        </defs>
+    </svg>
+
+    <main class="app">
+        <header class="cabecera">
+            <h1 class="titulo">Generador de Secretos</h1>
+            <nav class="pestanas" role="tablist" aria-label="Secciones">
+                <button role="tab" id="tab-gen" aria-selected="true" aria-controls="vista-gen" data-vista="gen">Generador</button>
+                <button role="tab" id="tab-boveda" aria-selected="false" aria-controls="vista-boveda" data-vista="boveda">
+                    Bóveda <span class="contador" id="contador-boveda">0</span>
+                </button>
+            </nav>
+        </header>
+
+        <!-- ===================== GENERADOR ===================== -->
+        <section id="vista-gen" role="tabpanel" aria-labelledby="tab-gen">
+            <div class="tarjeta salida-tarjeta">
+                <output id="salida" class="salida" for="tipos" aria-label="Secreto generado" tabindex="0"></output>
+                <div class="acciones-salida">
+                    <button class="icono-btn" id="btn-copiar" title="Copiar" aria-label="Copiar al portapapeles"><svg class="ico"><use href="#i-copy"/></svg></button>
+                    <button class="icono-btn" id="btn-regenerar" title="Generar otro" aria-label="Generar otro"><svg class="ico"><use href="#i-refresh"/></svg></button>
+                    <button class="icono-btn" id="btn-guardar" title="Guardar en la bóveda" aria-label="Guardar en la bóveda"><svg class="ico"><use href="#i-save"/></svg></button>
                 </div>
-            </section>
-            <button id="generar">Generar <i class="bi bi-arrow-right-short"></i></button>
+                <div class="fortaleza" aria-live="polite">
+                    <div class="barras" id="barras" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+                    <span id="fortaleza-texto" class="fortaleza-texto">—</span>
+                    <span id="fortaleza-detalle" class="fortaleza-detalle"></span>
+                </div>
+            </div>
+
+            <div class="tarjeta">
+                <div class="tipos" id="tipos" role="group" aria-label="Tipo de secreto">
+                    <button data-tipo="password" aria-pressed="true">Contraseña</button>
+                    <button data-tipo="phrase" aria-pressed="false">Frase</button>
+                    <button data-tipo="token" aria-pressed="false">Token</button>
+                    <button data-tipo="uuid" aria-pressed="false">UUID</button>
+                    <button data-tipo="pin" aria-pressed="false">PIN</button>
+                </div>
+
+                <!-- Contraseña -->
+                <div class="panel" data-panel="password">
+                    <div class="fila-rango">
+                        <label for="pw-longitud">Longitud</label>
+                        <output id="pw-longitud-val" class="valor">20</output>
+                    </div>
+                    <input type="range" id="pw-longitud" min="4" max="128" step="1" value="20">
+                    <div class="opciones">
+                        <label class="check"><input type="checkbox" id="pw-upper" checked><span>Mayúsculas (A-Z)</span></label>
+                        <label class="check"><input type="checkbox" id="pw-lower" checked><span>Minúsculas (a-z)</span></label>
+                        <label class="check"><input type="checkbox" id="pw-digits" checked><span>Números (0-9)</span></label>
+                        <label class="check"><input type="checkbox" id="pw-symbols" checked><span>Símbolos (!@#$…)</span></label>
+                        <label class="check"><input type="checkbox" id="pw-ambiguous"><span>Evitar ambiguos (Il1O0o)</span></label>
+                    </div>
+                </div>
+
+                <!-- Frase -->
+                <div class="panel" data-panel="phrase" hidden>
+                    <div class="fila-rango">
+                        <label for="ph-palabras">Palabras</label>
+                        <output id="ph-palabras-val" class="valor">5</output>
+                    </div>
+                    <input type="range" id="ph-palabras" min="3" max="12" step="1" value="5">
+                    <div class="fila-campo">
+                        <label for="ph-sep">Separador</label>
+                        <select id="ph-sep">
+                            <option value="-">Guion ( - )</option>
+                            <option value=" ">Espacio</option>
+                            <option value=".">Punto ( . )</option>
+                            <option value="_">Guion bajo ( _ )</option>
+                            <option value="">Ninguno</option>
+                        </select>
+                    </div>
+                    <div class="opciones">
+                        <label class="check"><input type="checkbox" id="ph-cap" checked><span>Capitalizar palabras</span></label>
+                        <label class="check"><input type="checkbox" id="ph-num"><span>Añadir número al final</span></label>
+                    </div>
+                </div>
+
+                <!-- Token -->
+                <div class="panel" data-panel="token" hidden>
+                    <div class="fila-rango">
+                        <label for="tk-longitud">Longitud</label>
+                        <output id="tk-longitud-val" class="valor">32</output>
+                    </div>
+                    <input type="range" id="tk-longitud" min="8" max="128" step="1" value="32">
+                    <div class="fila-campo">
+                        <label for="tk-formato">Formato</label>
+                        <select id="tk-formato">
+                            <option value="hex">Hexadecimal</option>
+                            <option value="base62">Base62 (A-Z a-z 0-9)</option>
+                            <option value="base64url">Base64URL (A-Z a-z 0-9 - _)</option>
+                        </select>
+                    </div>
+                    <div class="fila-campo">
+                        <label for="tk-prefijo">Prefijo (opcional)</label>
+                        <input type="text" id="tk-prefijo" maxlength="12" placeholder="sk_live_" autocomplete="off" spellcheck="false">
+                    </div>
+                </div>
+
+                <!-- UUID -->
+                <div class="panel" data-panel="uuid" hidden>
+                    <p class="ayuda">UUID v4 aleatorio (122 bits de entropía). Útil como identificador o clave de API.</p>
+                </div>
+
+                <!-- PIN -->
+                <div class="panel" data-panel="pin" hidden>
+                    <div class="fila-rango">
+                        <label for="pin-longitud">Dígitos</label>
+                        <output id="pin-longitud-val" class="valor">6</output>
+                    </div>
+                    <input type="range" id="pin-longitud" min="4" max="12" step="1" value="6">
+                </div>
+
+                <button id="btn-generar" class="primario">Generar</button>
+            </div>
+        </section>
+
+        <!-- ===================== BÓVEDA ===================== -->
+        <section id="vista-boveda" role="tabpanel" aria-labelledby="tab-boveda" hidden>
+            <div class="aviso" role="note">
+                <strong>Almacenamiento local.</strong> Los secretos se guardan en texto plano en este navegador
+                (<code>localStorage</code>) y no se envían a ningún servidor. No guardes aquí contraseñas críticas en
+                equipos compartidos.
+            </div>
+
+            <div class="tarjeta">
+                <input type="search" id="buscar" placeholder="Buscar por nombre…" aria-label="Buscar en la bóveda" autocomplete="off">
+                <ul id="lista" class="lista"></ul>
+                <p id="vacio" class="vacio" hidden>Aún no hay secretos guardados.<br>Genera uno y pulsa <em>Guardar</em>.</p>
+            </div>
+
+            <div class="barra-boveda">
+                <button class="secundario" id="btn-exportar"><svg class="ico"><use href="#i-download"/></svg> Exportar</button>
+                <button class="secundario" id="btn-importar"><svg class="ico"><use href="#i-upload"/></svg> Importar</button>
+                <button class="secundario peligro" id="btn-borrar-todo"><svg class="ico"><use href="#i-trash"/></svg> Borrar todo</button>
+                <input type="file" id="archivo-importar" accept="application/json,.json" hidden>
+            </div>
         </section>
     </main>
+
+    <!-- Diálogo guardar -->
+    <dialog id="dlg-guardar">
+        <form method="dialog" id="form-guardar">
+            <h2>Guardar en la bóveda</h2>
+            <label for="guardar-nombre">Nombre</label>
+            <input type="text" id="guardar-nombre" maxlength="60" required autocomplete="off" placeholder="Ej. Correo personal">
+            <div class="dlg-acciones">
+                <button type="button" class="secundario" id="guardar-cancelar">Cancelar</button>
+                <button type="submit" class="primario">Guardar</button>
+            </div>
+        </form>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
 </body>
+
 </html>
