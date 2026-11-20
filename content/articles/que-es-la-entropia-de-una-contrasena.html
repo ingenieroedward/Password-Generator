@@ -1,0 +1,57 @@
+<p>Cuando una web te dice que tu contraseña es «fuerte» o «débil», está intentando medir algo muy concreto: su <strong>entropía</strong>. Entender este concepto te ayuda a elegir mejor y a no fiarte de reglas que no sirven para nada.</p>
+
+<h2>Definición sencilla</h2>
+<p>La entropía mide, en <strong>bits</strong>, cuántas posibilidades tendría que probar un atacante para dar con tu contraseña. Cada bit duplica esa cantidad:</p>
+<ul>
+<li>10 bits → unas 1 000 posibilidades.</li>
+<li>20 bits → algo más de 1 millón.</li>
+<li>40 bits → más de 1 billón (10<sup>12</sup>).</li>
+<li>80 bits → una cifra tan grande que ningún ataque realista puede recorrerla.</li>
+</ul>
+
+<h2>La fórmula</h2>
+<p>Si la contraseña se genera <strong>de forma completamente aleatoria</strong>, su entropía es:</p>
+<p><code>entropía = longitud × log₂(tamaño del alfabeto)</code></p>
+<p>El «alfabeto» es el conjunto de caracteres posibles. Algunos valores típicos:</p>
+<table>
+<thead><tr><th>Alfabeto</th><th>Tamaño</th><th>Bits por carácter</th></tr></thead>
+<tbody>
+<tr><td>Solo dígitos</td><td>10</td><td>3,32</td></tr>
+<tr><td>Minúsculas</td><td>26</td><td>4,70</td></tr>
+<tr><td>Mayúsculas y minúsculas</td><td>52</td><td>5,70</td></tr>
+<tr><td>Letras y números</td><td>62</td><td>5,95</td></tr>
+<tr><td>Letras, números y ~32 símbolos</td><td>94</td><td>6,55</td></tr>
+</tbody>
+</table>
+
+<h2>Ejemplos</h2>
+<ul>
+<li>PIN de 4 dígitos: 4 × 3,32 ≈ <strong>13 bits</strong>. Se prueba en segundos si no hay límite de intentos.</li>
+<li>8 minúsculas al azar: 8 × 4,70 ≈ <strong>38 bits</strong>.</li>
+<li>16 caracteres de 94 posibles: 16 × 6,55 ≈ <strong>105 bits</strong>.</li>
+<li>20 caracteres de 94 posibles: 20 × 6,55 ≈ <strong>131 bits</strong>.</li>
+</ul>
+<p>Observa que añadir longitud aporta más que ampliar el alfabeto: pasar de 62 a 94 caracteres posibles suma 0,6 bits por posición, pero añadir una posición suma 6 bits enteros.</p>
+
+<h2>Importante: la fórmula solo vale si es aleatoria</h2>
+<p>Si eliges tú la contraseña, la entropía real es mucho menor que la teórica. <em>Contraseña2026!</em> tiene 15 caracteres y cuatro tipos de símbolo, pero un atacante la encontrará en minutos porque sigue un patrón humano muy conocido. Por eso una contraseña debe generarse con una fuente aleatoria segura, no inventarse.</p>
+
+<h2>¿Cuántos bits necesito?</h2>
+<p>Orientación general, asumiendo un atacante que puede probar miles de millones de combinaciones por segundo contra un archivo robado:</p>
+<ul>
+<li><strong>Menos de 40 bits:</strong> débil. Se puede romper con equipo doméstico.</li>
+<li><strong>De 50 a 70 bits:</strong> aceptable para cuentas de poco valor con límite de intentos.</li>
+<li><strong>De 75 a 100 bits:</strong> muy buena para cuentas importantes.</li>
+<li><strong>Más de 100 bits:</strong> más que suficiente, incluso para claves maestras.</li>
+</ul>
+<p>El medidor de nuestro <a href="{{root}}#generador">generador</a> muestra la entropía en bits y una estimación del tiempo de crackeo asumiendo 10 000 millones de intentos por segundo. Es una aproximación, pero te da una idea clara de la diferencia entre un nivel y otro.</p>
+
+<h2>Lo que la entropía no mide</h2>
+<ul>
+<li><strong>Dónde guardas la contraseña.</strong> Una contraseña perfecta sigue siendo inútil si la apuntas en un post-it o la escribes en una web falsa (<a href="{{root}}blog/como-detectar-phishing/">phishing</a>).</li>
+<li><strong>Si está reutilizada.</strong> Si la usas en varias cuentas, una filtración la expone en todas.</li>
+<li><strong>El segundo factor.</strong> La <a href="{{root}}blog/autenticacion-en-dos-pasos-2fa/">verificación en dos pasos</a> protege incluso si la contraseña se conoce.</li>
+</ul>
+
+<h2>Resumen</h2>
+<p>La entropía es una medida de cuántas posibilidades hay que probar. Para contraseñas generadas al azar, se calcula multiplicando la longitud por el logaritmo en base 2 del tamaño del alfabeto. Prioriza la longitud, genera siempre al azar y apunta a un mínimo de 75 bits para tus cuentas importantes.</p>

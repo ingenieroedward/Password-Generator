@@ -1,0 +1,52 @@
+<p>Una contraseña, por buena que sea, puede acabar en manos equivocadas: por una filtración, por un engaño o por un virus. La <strong>autenticación en dos pasos</strong> (2FA, o verificación en dos pasos) añade una segunda barrera para que ese robo no sea suficiente.</p>
+
+<h2>Qué es el 2FA</h2>
+<p>Consiste en pedir dos pruebas distintas para entrar en una cuenta:</p>
+<ol>
+<li><strong>Algo que sabes:</strong> tu contraseña.</li>
+<li><strong>Algo que tienes:</strong> tu teléfono, una llave física o una app de códigos.</li>
+</ol>
+<p>Si alguien consigue tu contraseña pero no tiene tu segundo factor, no puede entrar. Activar un segundo factor reduce de forma drástica el éxito de los ataques automatizados de robo de cuentas.</p>
+
+<h2>Tipos de segundo factor, de menos a más seguro</h2>
+<table>
+<thead><tr><th>Método</th><th>Seguridad</th><th>Comentario</th></tr></thead>
+<tbody>
+<tr><td>Código por SMS</td><td>Básica</td><td>Mejor que nada, pero vulnerable al robo de línea (<em>SIM swapping</em>) y a la interceptación.</td></tr>
+<tr><td>App de códigos (TOTP)</td><td>Alta</td><td>Genera un código de 6 dígitos que cambia cada 30 segundos. Funciona sin cobertura.</td></tr>
+<tr><td>Notificación «Aprobar»</td><td>Alta</td><td>Cómodo, pero hay que fijarse bien en qué se aprueba para no caer en la «fatiga de notificaciones».</td></tr>
+<tr><td>Llave de seguridad física o passkey</td><td>Muy alta</td><td>Resistente al phishing: solo funciona en la web legítima.</td></tr>
+</tbody>
+</table>
+
+<h2>Cómo activarlo</h2>
+<p>Los pasos varían según el servicio, pero suelen estar en <em>Ajustes → Seguridad</em>:</p>
+<ol>
+<li>Busca «Verificación en dos pasos», «Autenticación de dos factores» o «Inicio de sesión seguro».</li>
+<li>Elige, si puedes, una <strong>app de autenticación</strong> o una <strong>llave/passkey</strong> en lugar de SMS.</li>
+<li>Escanea el código QR con la app y confirma con el código que genera.</li>
+<li><strong>Guarda los códigos de recuperación.</strong> Es el paso que más se olvida y el que te salva si pierdes el móvil.</li>
+</ol>
+
+<h2>En qué cuentas activarlo primero</h2>
+<ol>
+<li><strong>Correo electrónico principal.</strong> Con él se restablecen casi todas las demás contraseñas.</li>
+<li><strong>Gestor de contraseñas.</strong></li>
+<li><strong>Banca y pagos.</strong></li>
+<li><strong>Redes sociales y almacenamiento en la nube.</strong></li>
+<li><strong>Cuentas de trabajo.</strong></li>
+</ol>
+
+<h2>Errores a evitar</h2>
+<ul>
+<li><strong>No guardar los códigos de recuperación.</strong> Guárdalos en un lugar seguro y distinto del móvil (por ejemplo, impresos en un cajón, o en el gestor de contraseñas).</li>
+<li><strong>Aprobar notificaciones que no has pedido.</strong> Si te llega una petición de acceso sin que hayas iniciado sesión, recházala y cambia tu contraseña.</li>
+<li><strong>Compartir el código con nadie.</strong> Ni siquiera con alguien que diga ser del soporte técnico: es una estafa muy habitual (véase <a href="{{root}}blog/como-detectar-phishing/">cómo detectar el phishing</a>).</li>
+<li><strong>Quedarte con un único dispositivo.</strong> Si es posible, registra una segunda llave o un segundo método de respaldo.</li>
+</ul>
+
+<h2>¿El 2FA sustituye a una buena contraseña?</h2>
+<p>No. Son capas complementarias. Una contraseña débil con 2FA sigue siendo un punto débil, y una contraseña fuerte sin 2FA depende de que nunca se filtre. Empieza creando <a href="{{root}}blog/como-crear-una-contrasena-segura/">una contraseña segura</a> y añade el segundo factor encima.</p>
+
+<h2>Resumen</h2>
+<p>Activa la verificación en dos pasos en tu correo, tu gestor y tu banca hoy mismo. Prefiere una app de códigos o una llave física frente al SMS y guarda los códigos de recuperación en un lugar seguro. Son diez minutos que evitan la mayoría de los robos de cuentas.</p>

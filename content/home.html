@@ -1,0 +1,170 @@
+<section class="hero">
+    <div class="wrap">
+        <h1>Generador de contraseñas seguras</h1>
+        <p class="lead">Crea contraseñas, frases, tokens y PIN aleatorios al instante. Gratis, sin registro y sin que nada salga de tu navegador.</p>
+    </div>
+</section>
+
+<section class="wrap" id="generador" aria-label="Generador">
+    <div class="herramienta">
+        <div class="salida-fila">
+            <output id="salida" class="salida" aria-label="Secreto generado" tabindex="0"></output>
+            <button class="btn btn-principal" id="btn-copiar" aria-label="Copiar al portapapeles"><svg class="ico"><use href="#i-copy"/></svg><span>Copiar</span></button>
+        </div>
+
+        <div class="fortaleza" aria-live="polite">
+            <div class="barras" id="barras" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <strong id="fortaleza-texto" class="fortaleza-texto">—</strong>
+            <span id="fortaleza-detalle" class="fortaleza-detalle"></span>
+        </div>
+
+        <div class="fila-botones">
+            <button class="btn" id="btn-regenerar"><svg class="ico"><use href="#i-refresh"/></svg><span>Generar otra</span></button>
+            <button class="btn" id="btn-guardar"><svg class="ico"><use href="#i-save"/></svg><span>Guardar en mi bóveda</span></button>
+        </div>
+
+        <hr>
+
+        <div class="tipos" id="tipos" role="group" aria-label="Tipo de secreto">
+            <button data-tipo="password" aria-pressed="true">Contraseña</button>
+            <button data-tipo="phrase" aria-pressed="false">Frase</button>
+            <button data-tipo="token" aria-pressed="false">Token</button>
+            <button data-tipo="uuid" aria-pressed="false">UUID</button>
+            <button data-tipo="pin" aria-pressed="false">PIN</button>
+        </div>
+
+        <!-- Contraseña -->
+        <div class="panel" data-panel="password">
+            <div class="fila-rango">
+                <label for="pw-longitud">Longitud</label>
+                <output id="pw-longitud-val" class="valor">20</output>
+            </div>
+            <input type="range" id="pw-longitud" min="4" max="128" step="1" value="20">
+            <div class="opciones">
+                <label class="check"><input type="checkbox" id="pw-upper" checked> Mayúsculas (A-Z)</label>
+                <label class="check"><input type="checkbox" id="pw-lower" checked> Minúsculas (a-z)</label>
+                <label class="check"><input type="checkbox" id="pw-digits" checked> Números (0-9)</label>
+                <label class="check"><input type="checkbox" id="pw-symbols" checked> Símbolos (!@#$…)</label>
+                <label class="check"><input type="checkbox" id="pw-ambiguous"> Evitar caracteres ambiguos (Il1O0o)</label>
+            </div>
+        </div>
+
+        <!-- Frase -->
+        <div class="panel" data-panel="phrase" hidden>
+            <div class="fila-rango">
+                <label for="ph-palabras">Palabras</label>
+                <output id="ph-palabras-val" class="valor">8</output>
+            </div>
+            <input type="range" id="ph-palabras" min="4" max="14" step="1" value="8">
+            <div class="campo">
+                <label for="ph-sep">Separador</label>
+                <select id="ph-sep">
+                    <option value="-">Guion ( - )</option>
+                    <option value=" ">Espacio</option>
+                    <option value=".">Punto ( . )</option>
+                    <option value="_">Guion bajo ( _ )</option>
+                    <option value="">Ninguno</option>
+                </select>
+            </div>
+            <div class="opciones">
+                <label class="check"><input type="checkbox" id="ph-cap" checked> Empezar cada palabra con mayúscula</label>
+                <label class="check"><input type="checkbox" id="ph-num"> Añadir un número al final</label>
+            </div>
+        </div>
+
+        <!-- Token -->
+        <div class="panel" data-panel="token" hidden>
+            <div class="fila-rango">
+                <label for="tk-longitud">Longitud</label>
+                <output id="tk-longitud-val" class="valor">32</output>
+            </div>
+            <input type="range" id="tk-longitud" min="8" max="128" step="1" value="32">
+            <div class="campo">
+                <label for="tk-formato">Formato</label>
+                <select id="tk-formato">
+                    <option value="hex">Hexadecimal</option>
+                    <option value="base62">Base62 (A-Z a-z 0-9)</option>
+                    <option value="base64url">Base64URL (A-Z a-z 0-9 - _)</option>
+                </select>
+            </div>
+            <div class="campo">
+                <label for="tk-prefijo">Prefijo (opcional)</label>
+                <input type="text" id="tk-prefijo" maxlength="12" placeholder="sk_live_" autocomplete="off" spellcheck="false">
+            </div>
+        </div>
+
+        <!-- UUID -->
+        <div class="panel" data-panel="uuid" hidden>
+            <p class="ayuda">UUID versión 4 aleatorio (122 bits de entropía). Útil como identificador único o clave de API.</p>
+        </div>
+
+        <!-- PIN -->
+        <div class="panel" data-panel="pin" hidden>
+            <div class="fila-rango">
+                <label for="pin-longitud">Dígitos</label>
+                <output id="pin-longitud-val" class="valor">6</output>
+            </div>
+            <input type="range" id="pin-longitud" min="4" max="12" step="1" value="6">
+        </div>
+    </div>
+    <p class="nota-privacidad"><svg class="ico"><use href="#i-lock"/></svg> Todo se genera en tu dispositivo. No enviamos ni almacenamos tus contraseñas.</p>
+</section>
+
+<section class="wrap seccion" id="boveda" aria-labelledby="t-boveda">
+    <h2 id="t-boveda">Mi bóveda local <span class="contador" id="contador-boveda">0</span></h2>
+    <p class="intro">Guarda aquí los secretos que generes. Se almacenan <strong>solo en este navegador</strong> (<code>localStorage</code>) y sin cifrar, así que no la uses para tus cuentas más críticas en equipos compartidos.</p>
+    <div class="herramienta">
+        <input type="search" id="buscar" placeholder="Buscar por nombre…" aria-label="Buscar en la bóveda" autocomplete="off">
+        <ul id="lista" class="lista"></ul>
+        <p id="vacio" class="vacio" hidden></p>
+        <div class="fila-botones">
+            <button class="btn" id="btn-exportar"><svg class="ico"><use href="#i-download"/></svg><span>Exportar</span></button>
+            <button class="btn" id="btn-importar"><svg class="ico"><use href="#i-upload"/></svg><span>Importar</span></button>
+            <button class="btn btn-peligro" id="btn-borrar-todo"><svg class="ico"><use href="#i-trash"/></svg><span>Borrar todo</span></button>
+            <input type="file" id="archivo-importar" accept="application/json,.json" hidden>
+        </div>
+    </div>
+</section>
+
+<section class="wrap seccion" aria-labelledby="t-porque">
+    <h2 id="t-porque">Por qué puedes confiar en este generador</h2>
+    <div class="columnas">
+        <div>
+            <h3>Aleatoriedad criptográfica</h3>
+            <p>Usamos <code>crypto.getRandomValues</code>, la fuente de números aleatorios segura de tu navegador, y un muestreo sin sesgo. No usamos <code>Math.random()</code>, que es predecible.</p>
+        </div>
+        <div>
+            <h3>Nada sale de tu dispositivo</h3>
+            <p>La página funciona sin enviar datos a ningún servidor. Sin cuentas, sin registro y sin rastreadores. Puedes desconectarte de internet y seguirá funcionando.</p>
+        </div>
+        <div>
+            <h3>Fortaleza real</h3>
+            <p>El medidor calcula la <a href="{{root}}blog/que-es-la-entropia-de-una-contrasena/">entropía</a> en bits y estima el tiempo de crackeo, en lugar de contar cuántas casillas marcaste.</p>
+        </div>
+    </div>
+</section>
+
+<section class="wrap seccion" aria-labelledby="t-consejos">
+    <h2 id="t-consejos">Cómo crear una contraseña segura: 5 reglas rápidas</h2>
+    <ol class="reglas">
+        <li><strong>Que sea larga.</strong> 14 caracteres como mínimo; 20 o más para correo, banca y gestor.</li>
+        <li><strong>Que sea aleatoria.</strong> Si la inventas tú, tiene un patrón. Déjalo en manos del generador.</li>
+        <li><strong>Que sea única.</strong> Una contraseña distinta en cada cuenta. Si una se filtra, las demás siguen a salvo.</li>
+        <li><strong>Usa un gestor de contraseñas</strong> para no tener que recordarlas.</li>
+        <li><strong>Activa la verificación en dos pasos</strong> en tus cuentas importantes.</li>
+    </ol>
+    <p><a href="{{root}}blog/como-crear-una-contrasena-segura/">Leer la guía completa →</a></p>
+</section>
+
+<section class="wrap seccion" aria-labelledby="t-blog">
+    <div class="cab-seccion">
+        <h2 id="t-blog">Aprende sobre seguridad</h2>
+        <a href="{{root}}blog/">Ver todos los artículos →</a>
+    </div>
+    <div class="tarjetas-blog">{{latest}}</div>
+</section>
+
+<section class="wrap seccion" id="preguntas" aria-labelledby="t-faq">
+    <h2 id="t-faq">Preguntas frecuentes</h2>
+    {{faq}}
+</section>

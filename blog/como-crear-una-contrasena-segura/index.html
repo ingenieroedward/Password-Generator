@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cómo crear una contraseña segura: guía práctica | Secretos</title>
+    <meta name="description" content="Aprende qué hace segura a una contraseña, qué errores evitar y cómo crear claves largas y únicas que sí puedas gestionar en el día a día.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://ingenieroedward.github.io/Password-Generator/blog/como-crear-una-contrasena-segura/">
+    <meta name="theme-color" content="#f6f3ec" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#141613" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Secretos">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:title" content="Cómo crear una contraseña segura: guía práctica | Secretos">
+    <meta property="og:description" content="Aprende qué hace segura a una contraseña, qué errores evitar y cómo crear claves largas y únicas que sí puedas gestionar en el día a día.">
+    <meta property="og:url" content="https://ingenieroedward.github.io/Password-Generator/blog/como-crear-una-contrasena-segura/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Cómo crear una contraseña segura: guía práctica | Secretos">
+    <meta name="twitter:description" content="Aprende qué hace segura a una contraseña, qué errores evitar y cómo crear claves largas y únicas que sí puedas gestionar en el día a día.">
+    <link rel="stylesheet" href="../../style.css">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Cómo crear una contraseña segura: guía práctica","description":"Aprende qué hace segura a una contraseña, qué errores evitar y cómo crear claves largas y únicas que sí puedas gestionar en el día a día.","inLanguage":"es","datePublished":"2026-11-18","dateModified":"2026-11-18","mainEntityOfPage":"https://ingenieroedward.github.io/Password-Generator/blog/como-crear-una-contrasena-segura/","author":{"@type":"Organization","name":"Secretos"},"publisher":{"@type":"Organization","name":"Secretos"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://ingenieroedward.github.io/Password-Generator/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://ingenieroedward.github.io/Password-Generator/blog/"},{"@type":"ListItem","position":3,"name":"Cómo crear una contraseña segura: guía práctica","item":"https://ingenieroedward.github.io/Password-Generator/blog/como-crear-una-contrasena-segura/"}]}</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+<symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
+<symbol id="i-save" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="i-eyeoff" viewBox="0 0 24 24"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/></symbol>
+<symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></symbol>
+<symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></symbol>
+</defs></svg>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+<header class="sitio">
+    <div class="wrap sitio-in">
+        <a class="marca" href="../../"><svg class="ico"><use href="#i-lock"/></svg><span>Secretos</span></a>
+        <nav aria-label="Principal">
+            <a href="../../#generador">Generador</a>
+            <a href="../../#boveda">Bóveda</a>
+            <a href="../../blog/" aria-current="page">Blog</a>
+            <a href="../../#preguntas">Preguntas</a>
+        </nav>
+    </div>
+</header>
+<main id="contenido">
+<article class="wrap articulo">
+    <nav class="migas" aria-label="Migas de pan"><a href="../../">Inicio</a> <span>/</span> <a href="../../blog/">Blog</a> <span>/</span> <span>Contraseñas</span></nav>
+    <header>
+        <h1>Cómo crear una contraseña segura: guía práctica</h1>
+        <p class="meta"><time datetime="2026-11-18">18 de noviembre de 2026</time> · 6 min de lectura</p>
+    </header>
+    <div class="texto">
+<p>Casi todo lo que haces en internet depende de una contraseña: el correo, el banco, las redes sociales, las compras. Y sin embargo, la mayoría de las personas sigue usando claves cortas, predecibles o repetidas. En esta guía te explicamos qué hace realmente segura a una contraseña y cómo crear las tuyas sin volverte loco.</p>
+
+<h2>Qué hace fuerte a una contraseña</h2>
+<p>Un atacante no suele «adivinar» tu contraseña a mano. Usa programas que prueban millones de combinaciones por segundo, empezando por las más comunes (<em>123456</em>, <em>qwerty</em>, nombres, fechas, palabras del diccionario con cambios típicos como <em>a → @</em>). Por eso, una buena contraseña cumple tres condiciones:</p>
+<ul>
+<li><strong>Es larga.</strong> Cada carácter extra multiplica el trabajo del atacante. Es el factor que más pesa.</li>
+<li><strong>Es aleatoria.</strong> No sigue un patrón humano. Si puedes explicar cómo la construiste, un programa también puede.</li>
+<li><strong>Es única.</strong> Se usa en una sola cuenta. Si se filtra en un sitio, el resto de tus cuentas no se ven comprometidas.</li>
+</ul>
+
+<h2>Longitud recomendada</h2>
+<p>Como referencia práctica:</p>
+<ul>
+<li><strong>14 caracteres</strong> como mínimo para cuentas habituales.</li>
+<li><strong>20 caracteres o más</strong> para el correo, la banca y el gestor de contraseñas.</li>
+<li><strong>Frases de 6 a 8 palabras al azar</strong> si necesitas memorizarla (por ejemplo, la clave maestra de un gestor). Te explicamos más en <a href="../../blog/frase-de-contrasena-vs-contrasena/">frase de contraseña vs. contraseña aleatoria</a>.</li>
+</ul>
+<p>Las directrices del NIST (SP 800-63B), una referencia internacional en autenticación, priorizan precisamente la longitud, desaconsejan imponer reglas de composición rígidas y recomiendan no obligar a cambiar la contraseña periódicamente sin motivo.</p>
+
+<h2>Errores muy comunes</h2>
+<ul>
+<li><strong>Reutilizar la misma contraseña.</strong> Es la causa número uno de cuentas robadas en cadena.</li>
+<li><strong>Usar datos personales:</strong> nombre de mascota, fecha de nacimiento, equipo de fútbol. Son lo primero que prueba un atacante.</li>
+<li><strong>Cambios obvios:</strong> <em>Contraseña1</em> → <em>Contraseña2</em> o <em>P@ssw0rd</em>. Los programas de ataque ya conocen estas variaciones.</li>
+<li><strong>Guardarlas en notas sin protección</strong> o enviárselas a ti mismo por correo o mensajería.</li>
+<li><strong>Compartirlas por chat.</strong> Si necesitas dar acceso a alguien, usa la función de compartir de un gestor de contraseñas.</li>
+</ul>
+
+<h2>Cómo crear una contraseña segura paso a paso</h2>
+<ol>
+<li><strong>Usa un generador.</strong> Los humanos somos malos eligiendo al azar. Un generador que utilice una fuente criptográfica, como el de esta web, elimina ese sesgo. <a href="../../#generador">Genera una contraseña ahora</a>.</li>
+<li><strong>Elige una longitud generosa.</strong> 20 caracteres con mayúsculas, minúsculas, números y símbolos es un buen punto de partida.</li>
+<li><strong>Guárdala en un gestor de contraseñas.</strong> No tienes que recordarla: solo la clave maestra del gestor.</li>
+<li><strong>Activa la verificación en dos pasos</strong> en las cuentas importantes. Mira la guía de <a href="../../blog/autenticacion-en-dos-pasos-2fa/">autenticación en dos pasos</a>.</li>
+</ol>
+
+<h2>¿Y si el sitio no admite contraseñas largas o símbolos?</h2>
+<p>Algunos servicios limitan la longitud o rechazan ciertos símbolos. En ese caso, genera la contraseña más larga que admita y, si hace falta, desactiva los símbolos y compénsalo con más caracteres. Una clave de 24 letras y números sigue siendo mucho más fuerte que una de 10 con símbolos.</p>
+
+<h2>Cuándo cambiar una contraseña</h2>
+<p>No necesitas renovarlas cada tres meses si son largas, únicas y no han sido expuestas. Cámbiala <strong>de inmediato</strong> si:</p>
+<ul>
+<li>Recibes un aviso de que el servicio ha sufrido una brecha de datos.</li>
+<li>Sospechas que alguien ha accedido a tu cuenta.</li>
+<li>La has introducido en una web que resultó ser un engaño (<a href="../../blog/como-detectar-phishing/">phishing</a>).</li>
+</ul>
+<p>Si ya te ha pasado, consulta <a href="../../blog/que-hacer-si-filtran-tu-contrasena/">qué hacer si tu contraseña se filtra</a>.</p>
+
+<h2>Resumen</h2>
+<p>Una contraseña segura es larga, aleatoria y única. No intentes recordarlas todas: delega en un gestor, protege la clave maestra con una frase larga y activa el segundo factor donde puedas. Con esos tres hábitos, evitas la gran mayoría de los problemas.</p>
+
+    </div>
+    <aside class="cta">
+        <h2>¿Necesitas una contraseña segura ahora?</h2>
+        <p>Genera una en un clic. Se crea en tu navegador y no se envía a ningún sitio.</p>
+        <a class="btn btn-principal" href="../../#generador">Abrir el generador</a>
+    </aside>
+    <section class="relacionados" aria-labelledby="t-rel">
+        <h2 id="t-rel">Sigue leyendo</h2>
+        <div class="tarjetas-blog"><article class="tarjeta-blog">
+    <span class="etiqueta">Contraseñas</span>
+    <h3><a href="../../blog/frase-de-contrasena-vs-contrasena/">Frase de contraseña o contraseña aleatoria: ¿cuál es mejor?</a></h3>
+    <p>Comparamos las frases de contraseña (passphrases) con las contraseñas aleatorias: seguridad, facilidad de recordar y cuándo conviene cada una.</p>
+    <span class="meta">5 min de lectura</span>
+</article>
+<article class="tarjeta-blog">
+    <span class="etiqueta">Conceptos</span>
+    <h3><a href="../../blog/que-es-la-entropia-de-una-contrasena/">Qué es la entropía de una contraseña y cómo se calcula</a></h3>
+    <p>La entropía mide cuántos intentos necesita un atacante para adivinar tu contraseña. Te explicamos la fórmula con ejemplos sencillos.</p>
+    <span class="meta">5 min de lectura</span>
+</article>
+<article class="tarjeta-blog">
+    <span class="etiqueta">Cuentas</span>
+    <h3><a href="../../blog/autenticacion-en-dos-pasos-2fa/">Autenticación en dos pasos (2FA): qué es y cómo activarla</a></h3>
+    <p>Guía clara sobre el 2FA: tipos de segundo factor, cuáles son más seguros y cómo activarlo sin quedarte fuera de tus cuentas.</p>
+    <span class="meta">6 min de lectura</span>
+</article></div>
+    </section>
+</article>
+</main>
+<footer class="pie">
+    <div class="wrap pie-in">
+        <div>
+            <strong>Secretos</strong>
+            <p>Generador de contraseñas y secretos que funciona en tu navegador. Sin cuentas, sin rastreo.</p>
+        </div>
+        <div>
+            <strong>Guías</strong>
+            <ul><li><a href="../../blog/como-crear-una-contrasena-segura/">Cómo crear una contraseña segura: guía práctica</a></li><li><a href="../../blog/frase-de-contrasena-vs-contrasena/">Frase de contraseña o contraseña aleatoria: ¿cuál es mejor?</a></li><li><a href="../../blog/que-es-la-entropia-de-una-contrasena/">Qué es la entropía de una contraseña y cómo se calcula</a></li><li><a href="../../blog/autenticacion-en-dos-pasos-2fa/">Autenticación en dos pasos (2FA): qué es y cómo activarla</a></li></ul>
+        </div>
+        <div>
+            <strong>Sitio</strong>
+            <ul>
+                <li><a href="../../#generador">Generador</a></li>
+                <li><a href="../../blog/">Blog de seguridad</a></li>
+                <li><a href="../../#preguntas">Preguntas frecuentes</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="wrap pie-copia">© 2026 Secretos. Contenido educativo; no constituye asesoramiento profesional.</div>
+</footer>
+</body>
+</html>

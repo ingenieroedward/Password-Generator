@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "como-crear-una-contrasena-segura",
+    "title": "Cómo crear una contraseña segura: guía práctica",
+    "description": "Aprende qué hace segura a una contraseña, qué errores evitar y cómo crear claves largas y únicas que sí puedas gestionar en el día a día.",
+    "date": "2026-11-18",
+    "minutes": 6,
+    "tag": "Contraseñas"
+  },
+  {
+    "slug": "frase-de-contrasena-vs-contrasena",
+    "title": "Frase de contraseña o contraseña aleatoria: ¿cuál es mejor?",
+    "description": "Comparamos las frases de contraseña (passphrases) con las contraseñas aleatorias: seguridad, facilidad de recordar y cuándo conviene cada una.",
+    "date": "2026-11-16",
+    "minutes": 5,
+    "tag": "Contraseñas"
+  },
+  {
+    "slug": "que-es-la-entropia-de-una-contrasena",
+    "title": "Qué es la entropía de una contraseña y cómo se calcula",
+    "description": "La entropía mide cuántos intentos necesita un atacante para adivinar tu contraseña. Te explicamos la fórmula con ejemplos sencillos.",
+    "date": "2026-11-14",
+    "minutes": 5,
+    "tag": "Conceptos"
+  },
+  {
+    "slug": "autenticacion-en-dos-pasos-2fa",
+    "title": "Autenticación en dos pasos (2FA): qué es y cómo activarla",
+    "description": "Guía clara sobre el 2FA: tipos de segundo factor, cuáles son más seguros y cómo activarlo sin quedarte fuera de tus cuentas.",
+    "date": "2026-11-12",
+    "minutes": 6,
+    "tag": "Cuentas"
+  },
+  {
+    "slug": "como-detectar-phishing",
+    "title": "Cómo detectar un correo de phishing: 8 señales de alerta",
+    "description": "Los correos y mensajes de phishing cada vez parecen más reales. Estas son las señales que debes revisar antes de hacer clic.",
+    "date": "2026-11-10",
+    "minutes": 5,
+    "tag": "Estafas"
+  },
+  {
+    "slug": "que-hacer-si-filtran-tu-contrasena",
+    "title": "Qué hacer si tu contraseña se filtra: pasos inmediatos",
+    "description": "Si tu contraseña aparece en una filtración de datos, actúa rápido: cómo comprobarlo, qué cambiar primero y cómo evitar que se repita.",
+    "date": "2026-11-08",
+    "minutes": 6,
+    "tag": "Incidentes"
+  }
+]

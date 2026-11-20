@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Qué es la entropía de una contraseña y cómo se calcula</title>
+    <meta name="description" content="La entropía mide cuántos intentos necesita un atacante para adivinar tu contraseña. Te explicamos la fórmula con ejemplos sencillos.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://ingenieroedward.github.io/Password-Generator/blog/que-es-la-entropia-de-una-contrasena/">
+    <meta name="theme-color" content="#f6f3ec" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#141613" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Secretos">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:title" content="Qué es la entropía de una contraseña y cómo se calcula">
+    <meta property="og:description" content="La entropía mide cuántos intentos necesita un atacante para adivinar tu contraseña. Te explicamos la fórmula con ejemplos sencillos.">
+    <meta property="og:url" content="https://ingenieroedward.github.io/Password-Generator/blog/que-es-la-entropia-de-una-contrasena/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Qué es la entropía de una contraseña y cómo se calcula">
+    <meta name="twitter:description" content="La entropía mide cuántos intentos necesita un atacante para adivinar tu contraseña. Te explicamos la fórmula con ejemplos sencillos.">
+    <link rel="stylesheet" href="../../style.css">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Qué es la entropía de una contraseña y cómo se calcula","description":"La entropía mide cuántos intentos necesita un atacante para adivinar tu contraseña. Te explicamos la fórmula con ejemplos sencillos.","inLanguage":"es","datePublished":"2026-11-14","dateModified":"2026-11-14","mainEntityOfPage":"https://ingenieroedward.github.io/Password-Generator/blog/que-es-la-entropia-de-una-contrasena/","author":{"@type":"Organization","name":"Secretos"},"publisher":{"@type":"Organization","name":"Secretos"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://ingenieroedward.github.io/Password-Generator/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://ingenieroedward.github.io/Password-Generator/blog/"},{"@type":"ListItem","position":3,"name":"Qué es la entropía de una contraseña y cómo se calcula","item":"https://ingenieroedward.github.io/Password-Generator/blog/que-es-la-entropia-de-una-contrasena/"}]}</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+<symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
+<symbol id="i-save" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="i-eyeoff" viewBox="0 0 24 24"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/></symbol>
+<symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></symbol>
+<symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></symbol>
+</defs></svg>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+<header class="sitio">
+    <div class="wrap sitio-in">
+        <a class="marca" href="../../"><svg class="ico"><use href="#i-lock"/></svg><span>Secretos</span></a>
+        <nav aria-label="Principal">
+            <a href="../../#generador">Generador</a>
+            <a href="../../#boveda">Bóveda</a>
+            <a href="../../blog/" aria-current="page">Blog</a>
+            <a href="../../#preguntas">Preguntas</a>
+        </nav>
+    </div>
+</header>
+<main id="contenido">
+<article class="wrap articulo">
+    <nav class="migas" aria-label="Migas de pan"><a href="../../">Inicio</a> <span>/</span> <a href="../../blog/">Blog</a> <span>/</span> <span>Conceptos</span></nav>
+    <header>
+        <h1>Qué es la entropía de una contraseña y cómo se calcula</h1>
+        <p class="meta"><time datetime="2026-11-14">14 de noviembre de 2026</time> · 5 min de lectura</p>
+    </header>
+    <div class="texto">
+<p>Cuando una web te dice que tu contraseña es «fuerte» o «débil», está intentando medir algo muy concreto: su <strong>entropía</strong>. Entender este concepto te ayuda a elegir mejor y a no fiarte de reglas que no sirven para nada.</p>
+
+<h2>Definición sencilla</h2>
+<p>La entropía mide, en <strong>bits</strong>, cuántas posibilidades tendría que probar un atacante para dar con tu contraseña. Cada bit duplica esa cantidad:</p>
+<ul>
+<li>10 bits → unas 1 000 posibilidades.</li>
+<li>20 bits → algo más de 1 millón.</li>
+<li>40 bits → más de 1 billón (10<sup>12</sup>).</li>
+<li>80 bits → una cifra tan grande que ningún ataque realista puede recorrerla.</li>
+</ul>
+
+<h2>La fórmula</h2>
+<p>Si la contraseña se genera <strong>de forma completamente aleatoria</strong>, su entropía es:</p>
+<p><code>entropía = longitud × log₂(tamaño del alfabeto)</code></p>
+<p>El «alfabeto» es el conjunto de caracteres posibles. Algunos valores típicos:</p>
+<table>
+<thead><tr><th>Alfabeto</th><th>Tamaño</th><th>Bits por carácter</th></tr></thead>
+<tbody>
+<tr><td>Solo dígitos</td><td>10</td><td>3,32</td></tr>
+<tr><td>Minúsculas</td><td>26</td><td>4,70</td></tr>
+<tr><td>Mayúsculas y minúsculas</td><td>52</td><td>5,70</td></tr>
+<tr><td>Letras y números</td><td>62</td><td>5,95</td></tr>
+<tr><td>Letras, números y ~32 símbolos</td><td>94</td><td>6,55</td></tr>
+</tbody>
+</table>
+
+<h2>Ejemplos</h2>
+<ul>
+<li>PIN de 4 dígitos: 4 × 3,32 ≈ <strong>13 bits</strong>. Se prueba en segundos si no hay límite de intentos.</li>
+<li>8 minúsculas al azar: 8 × 4,70 ≈ <strong>38 bits</strong>.</li>
+<li>16 caracteres de 94 posibles: 16 × 6,55 ≈ <strong>105 bits</strong>.</li>
+<li>20 caracteres de 94 posibles: 20 × 6,55 ≈ <strong>131 bits</strong>.</li>
+</ul>
+<p>Observa que añadir longitud aporta más que ampliar el alfabeto: pasar de 62 a 94 caracteres posibles suma 0,6 bits por posición, pero añadir una posición suma 6 bits enteros.</p>
+
+<h2>Importante: la fórmula solo vale si es aleatoria</h2>
+<p>Si eliges tú la contraseña, la entropía real es mucho menor que la teórica. <em>Contraseña2026!</em> tiene 15 caracteres y cuatro tipos de símbolo, pero un atacante la encontrará en minutos porque sigue un patrón humano muy conocido. Por eso una contraseña debe generarse con una fuente aleatoria segura, no inventarse.</p>
+
+<h2>¿Cuántos bits necesito?</h2>
+<p>Orientación general, asumiendo un atacante que puede probar miles de millones de combinaciones por segundo contra un archivo robado:</p>
+<ul>
+<li><strong>Menos de 40 bits:</strong> débil. Se puede romper con equipo doméstico.</li>
+<li><strong>De 50 a 70 bits:</strong> aceptable para cuentas de poco valor con límite de intentos.</li>
+<li><strong>De 75 a 100 bits:</strong> muy buena para cuentas importantes.</li>
+<li><strong>Más de 100 bits:</strong> más que suficiente, incluso para claves maestras.</li>
+</ul>
+<p>El medidor de nuestro <a href="../../#generador">generador</a> muestra la entropía en bits y una estimación del tiempo de crackeo asumiendo 10 000 millones de intentos por segundo. Es una aproximación, pero te da una idea clara de la diferencia entre un nivel y otro.</p>
+
+<h2>Lo que la entropía no mide</h2>
+<ul>
+<li><strong>Dónde guardas la contraseña.</strong> Una contraseña perfecta sigue siendo inútil si la apuntas en un post-it o la escribes en una web falsa (<a href="../../blog/como-detectar-phishing/">phishing</a>).</li>
+<li><strong>Si está reutilizada.</strong> Si la usas en varias cuentas, una filtración la expone en todas.</li>
+<li><strong>El segundo factor.</strong> La <a href="../../blog/autenticacion-en-dos-pasos-2fa/">verificación en dos pasos</a> protege incluso si la contraseña se conoce.</li>
+</ul>
+
+<h2>Resumen</h2>
+<p>La entropía es una medida de cuántas posibilidades hay que probar. Para contraseñas generadas al azar, se calcula multiplicando la longitud por el logaritmo en base 2 del tamaño del alfabeto. Prioriza la longitud, genera siempre al azar y apunta a un mínimo de 75 bits para tus cuentas importantes.</p>
+
+    </div>
+    <aside class="cta">
+        <h2>¿Necesitas una contraseña segura ahora?</h2>
+        <p>Genera una en un clic. Se crea en tu navegador y no se envía a ningún sitio.</p>
+        <a class="btn btn-principal" href="../../#generador">Abrir el generador</a>
+    </aside>
+    <section class="relacionados" aria-labelledby="t-rel">
+        <h2 id="t-rel">Sigue leyendo</h2>
+        <div class="tarjetas-blog"><article class="tarjeta-blog">
+    <span class="etiqueta">Contraseñas</span>
+    <h3><a href="../../blog/como-crear-una-contrasena-segura/">Cómo crear una contraseña segura: guía práctica</a></h3>
+    <p>Aprende qué hace segura a una contraseña, qué errores evitar y cómo crear claves largas y únicas que sí puedas gestionar en el día a día.</p>
+    <span class="meta">6 min de lectura</span>
+</article>
+<article class="tarjeta-blog">
+    <span class="etiqueta">Contraseñas</span>
+    <h3><a href="../../blog/frase-de-contrasena-vs-contrasena/">Frase de contraseña o contraseña aleatoria: ¿cuál es mejor?</a></h3>
+    <p>Comparamos las frases de contraseña (passphrases) con las contraseñas aleatorias: seguridad, facilidad de recordar y cuándo conviene cada una.</p>
+    <span class="meta">5 min de lectura</span>
+</article>
+<article class="tarjeta-blog">
+    <span class="etiqueta">Cuentas</span>
+    <h3><a href="../../blog/autenticacion-en-dos-pasos-2fa/">Autenticación en dos pasos (2FA): qué es y cómo activarla</a></h3>
+    <p>Guía clara sobre el 2FA: tipos de segundo factor, cuáles son más seguros y cómo activarlo sin quedarte fuera de tus cuentas.</p>
+    <span class="meta">6 min de lectura</span>
+</article></div>
+    </section>
+</article>
+</main>
+<footer class="pie">
+    <div class="wrap pie-in">
+        <div>
+            <strong>Secretos</strong>
+            <p>Generador de contraseñas y secretos que funciona en tu navegador. Sin cuentas, sin rastreo.</p>
+        </div>
+        <div>
+            <strong>Guías</strong>
+            <ul><li><a href="../../blog/como-crear-una-contrasena-segura/">Cómo crear una contraseña segura: guía práctica</a></li><li><a href="../../blog/frase-de-contrasena-vs-contrasena/">Frase de contraseña o contraseña aleatoria: ¿cuál es mejor?</a></li><li><a href="../../blog/que-es-la-entropia-de-una-contrasena/">Qué es la entropía de una contraseña y cómo se calcula</a></li><li><a href="../../blog/autenticacion-en-dos-pasos-2fa/">Autenticación en dos pasos (2FA): qué es y cómo activarla</a></li></ul>
+        </div>
+        <div>
+            <strong>Sitio</strong>
+            <ul>
+                <li><a href="../../#generador">Generador</a></li>
+                <li><a href="../../blog/">Blog de seguridad</a></li>
+                <li><a href="../../#preguntas">Preguntas frecuentes</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="wrap pie-copia">© 2026 Secretos. Contenido educativo; no constituye asesoramiento profesional.</div>
+</footer>
+</body>
+</html>

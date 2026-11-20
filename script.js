@@ -165,7 +165,7 @@ function escribirJSON(clave, valor) {
 const AJUSTES_DEFECTO = {
     tipo: 'password',
     password: { length: 20, upper: true, lower: true, digits: true, symbols: true, ambiguous: false },
-    phrase: { words: 5, sep: '-', cap: true, num: false },
+    phrase: { words: 8, sep: '-', cap: true, num: false },
     token: { fmt: 'hex', length: 32, prefix: '' },
     pin: { length: 6 }
 };
@@ -314,7 +314,6 @@ function aplicarAjustesAUI() {
     $('tk-formato').value = t.fmt; $('tk-prefijo').value = t.prefix;
     $('pin-longitud').value = n.length; $('pin-longitud-val').textContent = n.length;
     mostrarTipo();
-    rellenarRangos();
 }
 
 function mostrarTipo() {
@@ -322,15 +321,7 @@ function mostrarTipo() {
     document.querySelectorAll('.panel').forEach((p) => { p.hidden = p.dataset.panel !== ajustes.tipo; });
 }
 
-function rellenarRangos() {
-    document.querySelectorAll('input[type=range]').forEach((r) => {
-        const pct = ((r.value - r.min) / (r.max - r.min)) * 100;
-        r.style.setProperty('--pct', pct + '%');
-    });
-}
-
 function cambio() {
-    rellenarRangos();
     escribirJSON(CLAVE_AJUSTES, ajustes);
     generar();
 }
@@ -373,7 +364,6 @@ function enlazarControles() {
     $('tk-formato').addEventListener('change', (e) => { ajustes.token.fmt = e.target.value; cambio(); });
     $('tk-prefijo').addEventListener('input', (e) => { ajustes.token.prefix = e.target.value; cambio(); });
 
-    $('btn-generar').addEventListener('click', generar);
     $('btn-regenerar').addEventListener('click', generar);
 
     $('btn-copiar').addEventListener('click', async (e) => {
@@ -412,7 +402,7 @@ function pintarBoveda() {
 
     const items = boveda.filter((i) => !filtro || i.nombre.toLowerCase().includes(filtro));
     $('vacio').hidden = items.length > 0;
-    $('vacio').textContent = boveda.length ? 'Sin resultados.' : 'Aún no hay secretos guardados. Genera uno y pulsa Guardar.';
+    $('vacio').textContent = boveda.length ? 'Sin resultados.' : 'Aún no has guardado nada. Genera un secreto y pulsa «Guardar en mi bóveda».';
 
     for (const item of items) {
         const li = document.createElement('li');
@@ -454,10 +444,10 @@ function pintarBoveda() {
 
 function botonIcono(nombreIcono, etiqueta, fn) {
     const b = document.createElement('button');
-    b.className = 'icono-btn';
-    b.title = etiqueta;
-    b.setAttribute('aria-label', etiqueta);
-    b.appendChild(icono(nombreIcono));
+    b.className = 'btn-item';
+    const s = document.createElement('span');
+    s.textContent = etiqueta;
+    b.append(icono(nombreIcono), s);
     b.addEventListener('click', fn);
     return b;
 }
@@ -512,18 +502,6 @@ function enlazarBoveda() {
     });
 }
 
-/* ---------- Pestañas ---------- */
-
-function enlazarPestanas() {
-    document.querySelectorAll('.pestanas button').forEach((b) => b.addEventListener('click', () => {
-        const vista = b.dataset.vista;
-        document.querySelectorAll('.pestanas button').forEach((x) => x.setAttribute('aria-selected', String(x === b)));
-        $('vista-gen').hidden = vista !== 'gen';
-        $('vista-boveda').hidden = vista !== 'boveda';
-        if (vista === 'boveda') pintarBoveda();
-    }));
-}
-
 /* ---------- Inicio ---------- */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -531,7 +509,6 @@ document.addEventListener('DOMContentLoaded', () => {
     aplicarAjustesAUI();
     enlazarControles();
     enlazarBoveda();
-    enlazarPestanas();
     pintarBoveda();
     generar();
 });

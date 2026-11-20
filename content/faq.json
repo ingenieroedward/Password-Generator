@@ -1,0 +1,22 @@
+[
+  {
+    "q": "¿Es seguro este generador de contraseñas?",
+    "a": "Sí. Las contraseñas se generan en tu propio navegador con la API criptográfica del sistema (crypto.getRandomValues). No se envían a ningún servidor, no hay cuentas ni cookies de seguimiento."
+  },
+  {
+    "q": "¿Qué longitud debe tener una contraseña segura?",
+    "a": "Como mínimo 14 caracteres para cuentas normales y 20 o más para cuentas importantes (correo, banca, gestor de contraseñas). La longitud pesa más que añadir símbolos raros."
+  },
+  {
+    "q": "¿Puedo guardar las contraseñas que genero?",
+    "a": "Sí, en la bóveda local. Se guardan en este navegador (localStorage) y nunca salen de tu dispositivo. Ten en cuenta que no están cifradas, así que para tus cuentas más críticas es mejor usar un gestor de contraseñas dedicado."
+  },
+  {
+    "q": "¿Qué es una frase de contraseña?",
+    "a": "Es una combinación de varias palabras al azar, por ejemplo «Faro-Tigre-Nube-Cobre-Valle». Son más fáciles de recordar y muy seguras si tienen suficientes palabras y se eligen al azar."
+  },
+  {
+    "q": "¿Con qué frecuencia debo cambiar mis contraseñas?",
+    "a": "No hace falta cambiarlas de forma periódica si son largas, únicas y no se han filtrado. Cámbialas de inmediato si sospechas que alguien las conoce o si el servicio sufre una brecha de datos."
+  }
+]

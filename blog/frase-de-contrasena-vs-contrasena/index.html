@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Frase de contraseña o contraseña aleatoria: ¿cuál es mejor?</title>
+    <meta name="description" content="Comparamos las frases de contraseña (passphrases) con las contraseñas aleatorias: seguridad, facilidad de recordar y cuándo conviene cada una.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://ingenieroedward.github.io/Password-Generator/blog/frase-de-contrasena-vs-contrasena/">
+    <meta name="theme-color" content="#f6f3ec" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#141613" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Secretos">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:title" content="Frase de contraseña o contraseña aleatoria: ¿cuál es mejor?">
+    <meta property="og:description" content="Comparamos las frases de contraseña (passphrases) con las contraseñas aleatorias: seguridad, facilidad de recordar y cuándo conviene cada una.">
+    <meta property="og:url" content="https://ingenieroedward.github.io/Password-Generator/blog/frase-de-contrasena-vs-contrasena/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Frase de contraseña o contraseña aleatoria: ¿cuál es mejor?">
+    <meta name="twitter:description" content="Comparamos las frases de contraseña (passphrases) con las contraseñas aleatorias: seguridad, facilidad de recordar y cuándo conviene cada una.">
+    <link rel="stylesheet" href="../../style.css">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Frase de contraseña o contraseña aleatoria: ¿cuál es mejor?","description":"Comparamos las frases de contraseña (passphrases) con las contraseñas aleatorias: seguridad, facilidad de recordar y cuándo conviene cada una.","inLanguage":"es","datePublished":"2026-11-16","dateModified":"2026-11-16","mainEntityOfPage":"https://ingenieroedward.github.io/Password-Generator/blog/frase-de-contrasena-vs-contrasena/","author":{"@type":"Organization","name":"Secretos"},"publisher":{"@type":"Organization","name":"Secretos"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://ingenieroedward.github.io/Password-Generator/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://ingenieroedward.github.io/Password-Generator/blog/"},{"@type":"ListItem","position":3,"name":"Frase de contraseña o contraseña aleatoria: ¿cuál es mejor?","item":"https://ingenieroedward.github.io/Password-Generator/blog/frase-de-contrasena-vs-contrasena/"}]}</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+<symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
+<symbol id="i-save" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="i-eyeoff" viewBox="0 0 24 24"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/></symbol>
+<symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></symbol>
+<symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></symbol>
+</defs></svg>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+<header class="sitio">
+    <div class="wrap sitio-in">
+        <a class="marca" href="../../"><svg class="ico"><use href="#i-lock"/></svg><span>Secretos</span></a>
+        <nav aria-label="Principal">
+            <a href="../../#generador">Generador</a>
+            <a href="../../#boveda">Bóveda</a>
+            <a href="../../blog/" aria-current="page">Blog</a>
+            <a href="../../#preguntas">Preguntas</a>
+        </nav>
+    </div>
+</header>
+<main id="contenido">
+<article class="wrap articulo">
+    <nav class="migas" aria-label="Migas de pan"><a href="../../">Inicio</a> <span>/</span> <a href="../../blog/">Blog</a> <span>/</span> <span>Contraseñas</span></nav>
+    <header>
+        <h1>Frase de contraseña o contraseña aleatoria: ¿cuál es mejor?</h1>
+        <p class="meta"><time datetime="2026-11-16">16 de noviembre de 2026</time> · 5 min de lectura</p>
+    </header>
+    <div class="texto">
+<p>Durante años se nos ha dicho que una contraseña buena es algo como <em>x7$Kq!9vL2</em>: difícil de leer, imposible de recordar. Hoy sabemos que existe una alternativa mucho más cómoda: las <strong>frases de contraseña</strong> (en inglés, <em>passphrases</em>). Veamos cuándo conviene cada opción.</p>
+
+<h2>Qué es una frase de contraseña</h2>
+<p>Es una secuencia de varias palabras elegidas <strong>al azar</strong>, por ejemplo <em>Faro-Tigre-Nube-Cobre-Valle-Ancla</em>. La clave está en «al azar»: una frase famosa, un verso de una canción o una oración con sentido son fáciles de adivinar para un atacante, porque su espacio de búsqueda es mucho menor del que parece.</p>
+
+<h2>Ventajas de las frases</h2>
+<ul>
+<li><strong>Fáciles de recordar.</strong> Seis palabras al azar se memorizan con un poco de práctica, creando una pequeña historia mental.</li>
+<li><strong>Fáciles de escribir.</strong> Sobre todo en móviles, televisores o consolas, donde teclear símbolos es un suplicio.</li>
+<li><strong>Muy seguras si son suficientemente largas.</strong> Cada palabra aporta una cantidad fija de entropía que se suma a las anteriores.</li>
+</ul>
+
+<h2>Ventajas de las contraseñas aleatorias</h2>
+<ul>
+<li><strong>Más seguridad por carácter.</strong> Una clave de 20 caracteres aleatorios aporta mucha más entropía que una frase de 4 palabras de longitud similar.</li>
+<li><strong>Cabe en más sitios.</strong> Algunos servicios limitan la longitud o exigen símbolos.</li>
+<li><strong>Ideales para gestores.</strong> Si el gestor las rellena por ti, no necesitas recordarlas.</li>
+</ul>
+
+<h2>Comparación rápida</h2>
+<table>
+<thead><tr><th>Tipo</th><th>Ejemplo</th><th>Entropía aproximada</th></tr></thead>
+<tbody>
+<tr><td>Aleatoria, 12 caracteres (94 símbolos posibles)</td><td><code>k7#Qp!2vXz9L</code></td><td>≈ 79 bits</td></tr>
+<tr><td>Aleatoria, 20 caracteres</td><td><code>Zt4$mQ-w9Lr!Xe2Vb7Ka</code></td><td>≈ 131 bits</td></tr>
+<tr><td>Frase de 6 palabras (lista de 7776 palabras)</td><td><code>Faro-Tigre-Nube-Cobre-Valle-Ancla</code></td><td>≈ 77 bits</td></tr>
+<tr><td>Frase de 8 palabras (lista de 210 palabras, como la de esta web)</td><td><code>Faro-Tigre-Nube-Cobre-Valle-Ancla-Roble-Lince</code></td><td>≈ 62 bits</td></tr>
+</tbody>
+</table>
+<p>Fíjate en la última fila: la seguridad de una frase depende del tamaño de la lista de la que salen las palabras. La lista de esta web tiene 210 palabras (unos 7,7 bits por palabra), así que recomendamos <strong>8 palabras o más</strong>. Con listas de 7776 palabras, como las de tipo Diceware, cada palabra aporta unos 12,9 bits y 6 son suficientes. Si quieres entender estas cifras, lee <a href="../../blog/que-es-la-entropia-de-una-contrasena/">qué es la entropía</a>.</p>
+
+<h2>Qué usar en cada caso</h2>
+<ul>
+<li><strong>Clave maestra del gestor de contraseñas, desbloqueo del equipo, cifrado de disco:</strong> frase de contraseña. Son las pocas claves que sí tienes que recordar.</li>
+<li><strong>El resto de cuentas:</strong> contraseña aleatoria larga y única, guardada en el gestor.</li>
+<li><strong>Dispositivos donde escribir es incómodo:</strong> frase, con separadores sencillos.</li>
+</ul>
+
+<h2>Cómo crearla bien</h2>
+<ol>
+<li>Elige las palabras con un generador, no «a ojo». <a href="../../#generador">Genera una frase aquí</a> (pestaña <em>Frase</em>).</li>
+<li>No reordenes ni sustituyas palabras por otras que te gusten más: eso reduce la aleatoriedad.</li>
+<li>Usa 8 palabras o más con esta lista, y un separador que puedas teclear con comodidad.</li>
+<li>Memorízala repitiéndola durante unos días. Imagina una escena con las palabras en orden.</li>
+</ol>
+
+<h2>Conclusión</h2>
+<p>No es una competición: las dos opciones son buenas si son aleatorias y suficientemente largas. Usa frases para lo que tengas que recordar y contraseñas aleatorias para todo lo demás.</p>
+
+    </div>
+    <aside class="cta">
+        <h2>¿Necesitas una contraseña segura ahora?</h2>
+        <p>Genera una en un clic. Se crea en tu navegador y no se envía a ningún sitio.</p>
+        <a class="btn btn-principal" href="../../#generador">Abrir el generador</a>
+    </aside>
+    <section class="relacionados" aria-labelledby="t-rel">
+        <h2 id="t-rel">Sigue leyendo</h2>
+        <div class="tarjetas-blog"><article class="tarjeta-blog">
+    <span class="etiqueta">Contraseñas</span>
+    <h3><a href="../../blog/como-crear-una-contrasena-segura/">Cómo crear una contraseña segura: guía práctica</a></h3>
+    <p>Aprende qué hace segura a una contraseña, qué errores evitar y cómo crear claves largas y únicas que sí puedas gestionar en el día a día.</p>
+    <span class="meta">6 min de lectura</span>
+</article>
+<article class="tarjeta-blog">
+    <span class="etiqueta">Conceptos</span>
+    <h3><a href="../../blog/que-es-la-entropia-de-una-contrasena/">Qué es la entropía de una contraseña y cómo se calcula</a></h3>
+    <p>La entropía mide cuántos intentos necesita un atacante para adivinar tu contraseña. Te explicamos la fórmula con ejemplos sencillos.</p>
+    <span class="meta">5 min de lectura</span>
+</article>
+<article class="tarjeta-blog">
+    <span class="etiqueta">Cuentas</span>
+    <h3><a href="../../blog/autenticacion-en-dos-pasos-2fa/">Autenticación en dos pasos (2FA): qué es y cómo activarla</a></h3>
+    <p>Guía clara sobre el 2FA: tipos de segundo factor, cuáles son más seguros y cómo activarlo sin quedarte fuera de tus cuentas.</p>
+    <span class="meta">6 min de lectura</span>
+</article></div>
+    </section>
+</article>
+</main>
+<footer class="pie">
+    <div class="wrap pie-in">
+        <div>
+            <strong>Secretos</strong>
+            <p>Generador de contraseñas y secretos que funciona en tu navegador. Sin cuentas, sin rastreo.</p>
+        </div>
+        <div>
+            <strong>Guías</strong>
+            <ul><li><a href="../../blog/como-crear-una-contrasena-segura/">Cómo crear una contraseña segura: guía práctica</a></li><li><a href="../../blog/frase-de-contrasena-vs-contrasena/">Frase de contraseña o contraseña aleatoria: ¿cuál es mejor?</a></li><li><a href="../../blog/que-es-la-entropia-de-una-contrasena/">Qué es la entropía de una contraseña y cómo se calcula</a></li><li><a href="../../blog/autenticacion-en-dos-pasos-2fa/">Autenticación en dos pasos (2FA): qué es y cómo activarla</a></li></ul>
+        </div>
+        <div>
+            <strong>Sitio</strong>
+            <ul>
+                <li><a href="../../#generador">Generador</a></li>
+                <li><a href="../../blog/">Blog de seguridad</a></li>
+                <li><a href="../../#preguntas">Preguntas frecuentes</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="wrap pie-copia">© 2026 Secretos. Contenido educativo; no constituye asesoramiento profesional.</div>
+</footer>
+</body>
+</html>

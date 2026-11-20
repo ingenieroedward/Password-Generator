@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Autenticación en dos pasos (2FA): qué es y cómo activarla</title>
+    <meta name="description" content="Guía clara sobre el 2FA: tipos de segundo factor, cuáles son más seguros y cómo activarlo sin quedarte fuera de tus cuentas.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://ingenieroedward.github.io/Password-Generator/blog/autenticacion-en-dos-pasos-2fa/">
+    <meta name="theme-color" content="#f6f3ec" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#141613" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Secretos">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:title" content="Autenticación en dos pasos (2FA): qué es y cómo activarla">
+    <meta property="og:description" content="Guía clara sobre el 2FA: tipos de segundo factor, cuáles son más seguros y cómo activarlo sin quedarte fuera de tus cuentas.">
+    <meta property="og:url" content="https://ingenieroedward.github.io/Password-Generator/blog/autenticacion-en-dos-pasos-2fa/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Autenticación en dos pasos (2FA): qué es y cómo activarla">
+    <meta name="twitter:description" content="Guía clara sobre el 2FA: tipos de segundo factor, cuáles son más seguros y cómo activarlo sin quedarte fuera de tus cuentas.">
+    <link rel="stylesheet" href="../../style.css">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Autenticación en dos pasos (2FA): qué es y cómo activarla","description":"Guía clara sobre el 2FA: tipos de segundo factor, cuáles son más seguros y cómo activarlo sin quedarte fuera de tus cuentas.","inLanguage":"es","datePublished":"2026-11-12","dateModified":"2026-11-12","mainEntityOfPage":"https://ingenieroedward.github.io/Password-Generator/blog/autenticacion-en-dos-pasos-2fa/","author":{"@type":"Organization","name":"Secretos"},"publisher":{"@type":"Organization","name":"Secretos"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://ingenieroedward.github.io/Password-Generator/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://ingenieroedward.github.io/Password-Generator/blog/"},{"@type":"ListItem","position":3,"name":"Autenticación en dos pasos (2FA): qué es y cómo activarla","item":"https://ingenieroedward.github.io/Password-Generator/blog/autenticacion-en-dos-pasos-2fa/"}]}</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+<symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
+<symbol id="i-save" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="i-eyeoff" viewBox="0 0 24 24"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/></symbol>
+<symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></symbol>
+<symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></symbol>
+</defs></svg>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+<header class="sitio">
+    <div class="wrap sitio-in">
+        <a class="marca" href="../../"><svg class="ico"><use href="#i-lock"/></svg><span>Secretos</span></a>
+        <nav aria-label="Principal">
+            <a href="../../#generador">Generador</a>
+            <a href="../../#boveda">Bóveda</a>
+            <a href="../../blog/" aria-current="page">Blog</a>
+            <a href="../../#preguntas">Preguntas</a>
+        </nav>
+    </div>
+</header>
+<main id="contenido">
+<article class="wrap articulo">
+    <nav class="migas" aria-label="Migas de pan"><a href="../../">Inicio</a> <span>/</span> <a href="../../blog/">Blog</a> <span>/</span> <span>Cuentas</span></nav>
+    <header>
+        <h1>Autenticación en dos pasos (2FA): qué es y cómo activarla</h1>
+        <p class="meta"><time datetime="2026-11-12">12 de noviembre de 2026</time> · 6 min de lectura</p>
+    </header>
+    <div class="texto">
+<p>Una contraseña, por buena que sea, puede acabar en manos equivocadas: por una filtración, por un engaño o por un virus. La <strong>autenticación en dos pasos</strong> (2FA, o verificación en dos pasos) añade una segunda barrera para que ese robo no sea suficiente.</p>
+
+<h2>Qué es el 2FA</h2>
+<p>Consiste en pedir dos pruebas distintas para entrar en una cuenta:</p>
+<ol>
+<li><strong>Algo que sabes:</strong> tu contraseña.</li>
+<li><strong>Algo que tienes:</strong> tu teléfono, una llave física o una app de códigos.</li>
+</ol>
+<p>Si alguien consigue tu contraseña pero no tiene tu segundo factor, no puede entrar. Activar un segundo factor reduce de forma drástica el éxito de los ataques automatizados de robo de cuentas.</p>
+
+<h2>Tipos de segundo factor, de menos a más seguro</h2>
+<table>
+<thead><tr><th>Método</th><th>Seguridad</th><th>Comentario</th></tr></thead>
+<tbody>
+<tr><td>Código por SMS</td><td>Básica</td><td>Mejor que nada, pero vulnerable al robo de línea (<em>SIM swapping</em>) y a la interceptación.</td></tr>
+<tr><td>App de códigos (TOTP)</td><td>Alta</td><td>Genera un código de 6 dígitos que cambia cada 30 segundos. Funciona sin cobertura.</td></tr>
+<tr><td>Notificación «Aprobar»</td><td>Alta</td><td>Cómodo, pero hay que fijarse bien en qué se aprueba para no caer en la «fatiga de notificaciones».</td></tr>
+<tr><td>Llave de seguridad física o passkey</td><td>Muy alta</td><td>Resistente al phishing: solo funciona en la web legítima.</td></tr>
+</tbody>
+</table>
+
+<h2>Cómo activarlo</h2>
+<p>Los pasos varían según el servicio, pero suelen estar en <em>Ajustes → Seguridad</em>:</p>
+<ol>
+<li>Busca «Verificación en dos pasos», «Autenticación de dos factores» o «Inicio de sesión seguro».</li>
+<li>Elige, si puedes, una <strong>app de autenticación</strong> o una <strong>llave/passkey</strong> en lugar de SMS.</li>
+<li>Escanea el código QR con la app y confirma con el código que genera.</li>
+<li><strong>Guarda los códigos de recuperación.</strong> Es el paso que más se olvida y el que te salva si pierdes el móvil.</li>
+</ol>
+
+<h2>En qué cuentas activarlo primero</h2>
+<ol>
+<li><strong>Correo electrónico principal.</strong> Con él se restablecen casi todas las demás contraseñas.</li>
+<li><strong>Gestor de contraseñas.</strong></li>
+<li><strong>Banca y pagos.</strong></li>
+<li><strong>Redes sociales y almacenamiento en la nube.</strong></li>
+<li><strong>Cuentas de trabajo.</strong></li>
+</ol>
+
+<h2>Errores a evitar</h2>
+<ul>
+<li><strong>No guardar los códigos de recuperación.</strong> Guárdalos en un lugar seguro y distinto del móvil (por ejemplo, impresos en un cajón, o en el gestor de contraseñas).</li>
+<li><strong>Aprobar notificaciones que no has pedido.</strong> Si te llega una petición de acceso sin que hayas iniciado sesión, recházala y cambia tu contraseña.</li>
+<li><strong>Compartir el código con nadie.</strong> Ni siquiera con alguien que diga ser del soporte técnico: es una estafa muy habitual (véase <a href="../../blog/como-detectar-phishing/">cómo detectar el phishing</a>).</li>
+<li><strong>Quedarte con un único dispositivo.</strong> Si es posible, registra una segunda llave o un segundo método de respaldo.</li>
+</ul>
+
+<h2>¿El 2FA sustituye a una buena contraseña?</h2>
+<p>No. Son capas complementarias. Una contraseña débil con 2FA sigue siendo un punto débil, y una contraseña fuerte sin 2FA depende de que nunca se filtre. Empieza creando <a href="../../blog/como-crear-una-contrasena-segura/">una contraseña segura</a> y añade el segundo factor encima.</p>
+
+<h2>Resumen</h2>
+<p>Activa la verificación en dos pasos en tu correo, tu gestor y tu banca hoy mismo. Prefiere una app de códigos o una llave física frente al SMS y guarda los códigos de recuperación en un lugar seguro. Son diez minutos que evitan la mayoría de los robos de cuentas.</p>
+
+    </div>
+    <aside class="cta">
+        <h2>¿Necesitas una contraseña segura ahora?</h2>
+        <p>Genera una en un clic. Se crea en tu navegador y no se envía a ningún sitio.</p>
+        <a class="btn btn-principal" href="../../#generador">Abrir el generador</a>
+    </aside>
+    <section class="relacionados" aria-labelledby="t-rel">
+        <h2 id="t-rel">Sigue leyendo</h2>
+        <div class="tarjetas-blog"><article class="tarjeta-blog">
+    <span class="etiqueta">Contraseñas</span>
+    <h3><a href="../../blog/como-crear-una-contrasena-segura/">Cómo crear una contraseña segura: guía práctica</a></h3>
+    <p>Aprende qué hace segura a una contraseña, qué errores evitar y cómo crear claves largas y únicas que sí puedas gestionar en el día a día.</p>
+    <span class="meta">6 min de lectura</span>
+</article>
+<article class="tarjeta-blog">
+    <span class="etiqueta">Contraseñas</span>
+    <h3><a href="../../blog/frase-de-contrasena-vs-contrasena/">Frase de contraseña o contraseña aleatoria: ¿cuál es mejor?</a></h3>
+    <p>Comparamos las frases de contraseña (passphrases) con las contraseñas aleatorias: seguridad, facilidad de recordar y cuándo conviene cada una.</p>
+    <span class="meta">5 min de lectura</span>
+</article>
+<article class="tarjeta-blog">
+    <span class="etiqueta">Conceptos</span>
+    <h3><a href="../../blog/que-es-la-entropia-de-una-contrasena/">Qué es la entropía de una contraseña y cómo se calcula</a></h3>
+    <p>La entropía mide cuántos intentos necesita un atacante para adivinar tu contraseña. Te explicamos la fórmula con ejemplos sencillos.</p>
+    <span class="meta">5 min de lectura</span>
+</article></div>
+    </section>
+</article>
+</main>
+<footer class="pie">
+    <div class="wrap pie-in">
+        <div>
+            <strong>Secretos</strong>
+            <p>Generador de contraseñas y secretos que funciona en tu navegador. Sin cuentas, sin rastreo.</p>
+        </div>
+        <div>
+            <strong>Guías</strong>
+            <ul><li><a href="../../blog/como-crear-una-contrasena-segura/">Cómo crear una contraseña segura: guía práctica</a></li><li><a href="../../blog/frase-de-contrasena-vs-contrasena/">Frase de contraseña o contraseña aleatoria: ¿cuál es mejor?</a></li><li><a href="../../blog/que-es-la-entropia-de-una-contrasena/">Qué es la entropía de una contraseña y cómo se calcula</a></li><li><a href="../../blog/autenticacion-en-dos-pasos-2fa/">Autenticación en dos pasos (2FA): qué es y cómo activarla</a></li></ul>
+        </div>
+        <div>
+            <strong>Sitio</strong>
+            <ul>
+                <li><a href="../../#generador">Generador</a></li>
+                <li><a href="../../blog/">Blog de seguridad</a></li>
+                <li><a href="../../#preguntas">Preguntas frecuentes</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="wrap pie-copia">© 2026 Secretos. Contenido educativo; no constituye asesoramiento profesional.</div>
+</footer>
+</body>
+</html>

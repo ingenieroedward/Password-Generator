@@ -1,0 +1,48 @@
+<p>Durante años se nos ha dicho que una contraseña buena es algo como <em>x7$Kq!9vL2</em>: difícil de leer, imposible de recordar. Hoy sabemos que existe una alternativa mucho más cómoda: las <strong>frases de contraseña</strong> (en inglés, <em>passphrases</em>). Veamos cuándo conviene cada opción.</p>
+
+<h2>Qué es una frase de contraseña</h2>
+<p>Es una secuencia de varias palabras elegidas <strong>al azar</strong>, por ejemplo <em>Faro-Tigre-Nube-Cobre-Valle-Ancla</em>. La clave está en «al azar»: una frase famosa, un verso de una canción o una oración con sentido son fáciles de adivinar para un atacante, porque su espacio de búsqueda es mucho menor del que parece.</p>
+
+<h2>Ventajas de las frases</h2>
+<ul>
+<li><strong>Fáciles de recordar.</strong> Seis palabras al azar se memorizan con un poco de práctica, creando una pequeña historia mental.</li>
+<li><strong>Fáciles de escribir.</strong> Sobre todo en móviles, televisores o consolas, donde teclear símbolos es un suplicio.</li>
+<li><strong>Muy seguras si son suficientemente largas.</strong> Cada palabra aporta una cantidad fija de entropía que se suma a las anteriores.</li>
+</ul>
+
+<h2>Ventajas de las contraseñas aleatorias</h2>
+<ul>
+<li><strong>Más seguridad por carácter.</strong> Una clave de 20 caracteres aleatorios aporta mucha más entropía que una frase de 4 palabras de longitud similar.</li>
+<li><strong>Cabe en más sitios.</strong> Algunos servicios limitan la longitud o exigen símbolos.</li>
+<li><strong>Ideales para gestores.</strong> Si el gestor las rellena por ti, no necesitas recordarlas.</li>
+</ul>
+
+<h2>Comparación rápida</h2>
+<table>
+<thead><tr><th>Tipo</th><th>Ejemplo</th><th>Entropía aproximada</th></tr></thead>
+<tbody>
+<tr><td>Aleatoria, 12 caracteres (94 símbolos posibles)</td><td><code>k7#Qp!2vXz9L</code></td><td>≈ 79 bits</td></tr>
+<tr><td>Aleatoria, 20 caracteres</td><td><code>Zt4$mQ-w9Lr!Xe2Vb7Ka</code></td><td>≈ 131 bits</td></tr>
+<tr><td>Frase de 6 palabras (lista de 7776 palabras)</td><td><code>Faro-Tigre-Nube-Cobre-Valle-Ancla</code></td><td>≈ 77 bits</td></tr>
+<tr><td>Frase de 8 palabras (lista de 210 palabras, como la de esta web)</td><td><code>Faro-Tigre-Nube-Cobre-Valle-Ancla-Roble-Lince</code></td><td>≈ 62 bits</td></tr>
+</tbody>
+</table>
+<p>Fíjate en la última fila: la seguridad de una frase depende del tamaño de la lista de la que salen las palabras. La lista de esta web tiene 210 palabras (unos 7,7 bits por palabra), así que recomendamos <strong>8 palabras o más</strong>. Con listas de 7776 palabras, como las de tipo Diceware, cada palabra aporta unos 12,9 bits y 6 son suficientes. Si quieres entender estas cifras, lee <a href="{{root}}blog/que-es-la-entropia-de-una-contrasena/">qué es la entropía</a>.</p>
+
+<h2>Qué usar en cada caso</h2>
+<ul>
+<li><strong>Clave maestra del gestor de contraseñas, desbloqueo del equipo, cifrado de disco:</strong> frase de contraseña. Son las pocas claves que sí tienes que recordar.</li>
+<li><strong>El resto de cuentas:</strong> contraseña aleatoria larga y única, guardada en el gestor.</li>
+<li><strong>Dispositivos donde escribir es incómodo:</strong> frase, con separadores sencillos.</li>
+</ul>
+
+<h2>Cómo crearla bien</h2>
+<ol>
+<li>Elige las palabras con un generador, no «a ojo». <a href="{{root}}#generador">Genera una frase aquí</a> (pestaña <em>Frase</em>).</li>
+<li>No reordenes ni sustituyas palabras por otras que te gusten más: eso reduce la aleatoriedad.</li>
+<li>Usa 8 palabras o más con esta lista, y un separador que puedas teclear con comodidad.</li>
+<li>Memorízala repitiéndola durante unos días. Imagina una escena con las palabras en orden.</li>
+</ol>
+
+<h2>Conclusión</h2>
+<p>No es una competición: las dos opciones son buenas si son aleatorias y suficientemente largas. Usa frases para lo que tengas que recordar y contraseñas aleatorias para todo lo demás.</p>
