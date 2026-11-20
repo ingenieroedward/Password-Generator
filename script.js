@@ -255,9 +255,14 @@ function icono(nombre) {
 }
 
 function parpadeoOk(btn, nombreIcono) {
+    const original = [...btn.childNodes];
     btn.classList.add('ok');
-    btn.replaceChildren(icono('check'));
-    setTimeout(() => { btn.classList.remove('ok'); btn.replaceChildren(icono(nombreIcono)); }, 1200);
+    const nodos = [icono('check')];
+    if (original.some((n) => n.nodeName === 'SPAN')) {
+        const s = document.createElement('span'); s.textContent = '¡Copiado!'; nodos.push(s);
+    }
+    btn.replaceChildren(...nodos);
+    setTimeout(() => { btn.classList.remove('ok'); btn.replaceChildren(...original); }, 1200);
 }
 
 /* ---------- Generador: render ---------- */
@@ -265,6 +270,7 @@ function parpadeoOk(btn, nombreIcono) {
 function pintarSalida(valor) {
     const salida = $('salida');
     salida.replaceChildren();
+    salida.classList.remove('nuevo'); void salida.offsetWidth; salida.classList.add('nuevo');
     for (const ch of valor) {
         if (/[0-9]/.test(ch)) {
             const s = document.createElement('span'); s.className = 'd'; s.textContent = ch; salida.appendChild(s);
@@ -308,6 +314,7 @@ function aplicarAjustesAUI() {
     $('tk-formato').value = t.fmt; $('tk-prefijo').value = t.prefix;
     $('pin-longitud').value = n.length; $('pin-longitud-val').textContent = n.length;
     mostrarTipo();
+    rellenarRangos();
 }
 
 function mostrarTipo() {
@@ -315,7 +322,15 @@ function mostrarTipo() {
     document.querySelectorAll('.panel').forEach((p) => { p.hidden = p.dataset.panel !== ajustes.tipo; });
 }
 
+function rellenarRangos() {
+    document.querySelectorAll('input[type=range]').forEach((r) => {
+        const pct = ((r.value - r.min) / (r.max - r.min)) * 100;
+        r.style.setProperty('--pct', pct + '%');
+    });
+}
+
 function cambio() {
+    rellenarRangos();
     escribirJSON(CLAVE_AJUSTES, ajustes);
     generar();
 }
